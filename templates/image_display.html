@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--<h1>Name - {{context.name}}</h1>
+    <h3>URL - {{ context.image.url}} </h3>
+	<h3> sample test - {{ context.detected_img.url}} </h3>-->
+	
+	<a href="{% url 'home' %}" class="btn btn-primary ">Go Back!!!</a>
+	<br>
+    <form method="POST" action="{% url 'deleteimg' context.id %}" >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+    </form>
+    
+    <!--<img src="{{context.image.url}}" alt="Smiley face" width="600" height="500">
+    <img src="{{context.cartoonized_img.url}}" alt="ml-image" width="600" height="500">
+    <br>-->
+
+<div class="container">
+  <div class="card-deck">
+    <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{context.image.url}}" alt="Card image" style="width:100%">
+    	<div class="card-body">
+      		<h4 class="card-title">Uploaded image</h4>
+      		<p class="card-text">Here you can see the uploaded raw image</p>
+      		<a href="#" class="btn btn-primary stretched-link">Download</a>
+    	</div>
+    </div>
+    <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{context.cartoonized_img.url}}" alt="Card image" style="width:100%">
+    	<div class="card-body">
+      		<h4 class="card-title">Cartoonized image</h4>
+      		<p class="card-text">Apply Deeplearning model to perform cartoonization</p>
+      		<a href="#" class="btn btn-primary stretched-link">Download</a>
+    	</div>
+    </div>
+</div>
+
+</body>
+
+
+</html>
